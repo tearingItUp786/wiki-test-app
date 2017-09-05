@@ -36,7 +36,7 @@ class App extends React.Component {
       <BrowserRouter>
         <div>
           <Route path="/login" component={Login} />
-          <PrivateRoute path="/dashboard" component={DashBoard} />
+          <PrivateRoute uid={this.state.uid} path="/dashboard" component={DashBoard} />
         </div>
       </BrowserRouter>
     )

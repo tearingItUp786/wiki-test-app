@@ -4,10 +4,11 @@ import PropTypes from 'prop-types'
 
 import { isAuthenticated } from './firebase'
 
-const PrivateRoute = ({ component: Component, ...rest }) => (
+const PrivateRoute = ({ component: Component, uid, ...rest }) => (
   <Route
     {...rest}
-    render={props => (isAuthenticated() ? <Component {...props} /> : <Redirect to={{ pathname: '/login' }} />)}
+    render={props =>
+      isAuthenticated() ? <Component uid={uid} {...props} /> : <Redirect to={{ pathname: '/login' }} />}
   />
 )
 
@@ -16,6 +17,7 @@ PrivateRoute.propTypes = {
   location: PropTypes.shape({
     pathname: PropTypes.string.isRequired,
   }).isRequired,
+  uid: PropTypes.string.isRequired,
 }
 
 export default PrivateRoute
