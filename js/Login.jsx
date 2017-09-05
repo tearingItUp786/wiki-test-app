@@ -9,7 +9,10 @@ class Login extends Component {
   }
 
   login = () => {
-    if (isAuthenticated()) {
+    if (!isAuthenticated()) {
+      auth.signInWithPopup(googleAuthProvider).then(() => this.setState({ redirectToReferrer: true }))
+    } else {
+      // user is signed in
       this.setState({ redirectToReferrer: true })
     }
   }
@@ -24,7 +27,7 @@ class Login extends Component {
 
     return (
       <div className="SignIn">
-        <button onClick={() => auth.signInWithPopup(googleAuthProvider)}>Sign In</button>
+        <button onClick={this.login}>Sign In</button>
       </div>
     )
   }

@@ -1,16 +1,18 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import { BrowserRouter, Route } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { auth, storageKey } from './firebase'
 import DashBoard from './DashBoard'
 import Login from './Login'
 import PrivateRoute from './PrivateRoute'
 
+const Add = () => <h1>Add</h1>
+const Delete = () => <h1>Delete</h1>
+
 class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      uid: '',
+      user: '',
     }
   }
 
@@ -19,14 +21,15 @@ class App extends React.Component {
       if (user) {
         window.localStorage.setItem(storageKey, user.uid)
         this.setState({
-          uid: user.uid,
+          user,
         })
+        console.log('a user rexisted')
       } else {
         window.localStorage.removeItem(storageKey)
-
         this.setState({
-          uid: '',
+          user: '',
         })
+        console.log('user was logged out')
       }
     })
   }
@@ -34,21 +37,15 @@ class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
-        <div>
-          <Route path="/login" component={Login} />
-          <PrivateRoute uid={this.state.uid} path="/dashboard" component={DashBoard} />
-        </div>
+        <Switch>
+          <Route path="/login" component={Login} handleAuthChange />
+          <PrivateRoute exact user={this.state.user} path="/add" component={Add} />
+          <PrivateRoute exact user={this.state.user} path="/delete" component={Delete} />
+          <PrivateRoute user={this.state.user} path="/" component={DashBoard} />
+        </Switch>
       </BrowserRouter>
     )
   }
-}
-
-App.defaultProps = {
-  uid: '',
-}
-
-App.propTypes = {
-  uid: PropTypes.string,
 }
 
 export default App
