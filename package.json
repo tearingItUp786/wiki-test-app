@@ -1,0 +1,68 @@
+{
+  "name": "wiki",
+  "version": "1.0.0",
+  "description": "A wiki test app made after watching Bholts intro to react",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint **/*.{js, jsx} --quiet",
+    "buid": "webpack",
+    "dev": "webpack-dev-server",
+    "format": "prettier --write --single-quote --print-width=120 --parser=flow --tab-width=2 \"js/**/*.{js,jsx}\""
+  },
+  "jest": {
+    "snapshotSerializers": [
+      "jest-serializer-enzyme"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tearingItUp786/wiki-test-app.git"
+  },
+  "author": "Taran Bains",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tearingItUp786/wiki-test-app/issues"
+  },
+  "homepage": "https://github.com/tearingItUp786/wiki-test-app#readme",
+  "dependencies": {
+    "babel-plugin-dynamic-import-webpack": "^1.0.1",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-register": "^6.26.0",
+    "firebase": "^4.3.0",
+    "prop-types": "^15.5.10",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-router-dom": "^4.2.2",
+    "styled-components": "^2.1.2",
+    "webpack": "^3.5.5",
+    "webpack-hot-middleware": "^2.18.2"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^7.2.3",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-dynamic-import-node": "^1.0.2",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-react": "^6.24.1",
+    "enzyme": "^2.9.1",
+    "eslint": "^4.3.0",
+    "eslint-config-airbnb": "^15.1.0",
+    "eslint-config-prettier": "^2.4.0",
+    "eslint-config-react": "^1.1.7",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-prettier": "^2.2.0",
+    "eslint-plugin-react": "^7.1.0",
+    "jest": "^21.0.1",
+    "jest-serializer-enzyme": "^1.0.0",
+    "prettier": "^1.6.1",
+    "react-hot-loader": "^3.0.0-beta.6",
+    "react-test-renderer": "^15.6.1",
+    "webpack-dev-server": "^2.7.1"
+  }
+}
