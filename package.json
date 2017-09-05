@@ -5,14 +5,12 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint **/*.{js, jsx} --quiet",
-    "buid": "webpack",
+    "build": "webpack",
     "dev": "webpack-dev-server",
     "format": "prettier --write --single-quote --print-width=120 --parser=flow --tab-width=2 \"js/**/*.{js,jsx}\""
   },
   "jest": {
-    "snapshotSerializers": [
-      "jest-serializer-enzyme"
-    ]
+    "snapshotSerializers": ["jest-serializer-enzyme"]
   },
   "repository": {
     "type": "git",
@@ -32,6 +30,7 @@
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
+    "react-quill": "^1.0.0",
     "react-router-dom": "^4.2.2",
     "styled-components": "^2.1.2",
     "webpack": "^3.5.5",
@@ -48,6 +47,7 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.0",
     "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.7",
     "enzyme": "^2.9.1",
     "eslint": "^4.3.0",
     "eslint-config-airbnb": "^15.1.0",
@@ -63,6 +63,7 @@
     "prettier": "^1.6.1",
     "react-hot-loader": "^3.0.0-beta.6",
     "react-test-renderer": "^15.6.1",
+    "style-loader": "^0.18.2",
     "webpack-dev-server": "^2.7.1"
   }
 }

@@ -1,17 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-
+import MyEditor from './MyEditor'
 import Header from './Header'
 
-const DashBoard = ({ user }) => (
+const Add = ({ user }) => (
   <div>
     <Header photoURL={user.photoURL} displayName={user.displayName} />
-    <h1>DashBoard</h1>
+    <h1>Add</h1>
+    <MyEditor />
   </div>
 )
 
-DashBoard.propTypes = {
+Add.propTypes = {
   user: PropTypes.shape().isRequired,
 }
 
-export default DashBoard
+export default Add

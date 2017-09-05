@@ -4,8 +4,8 @@ import { auth, storageKey } from './firebase'
 import DashBoard from './DashBoard'
 import Login from './Login'
 import PrivateRoute from './PrivateRoute'
+import Add from './Add'
 
-const Add = () => <h1>Add</h1>
 const Delete = () => <h1>Delete</h1>
 
 class App extends React.Component {
