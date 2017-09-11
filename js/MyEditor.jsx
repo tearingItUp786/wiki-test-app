@@ -8,27 +8,35 @@ import { db } from './firebase'
 class MyEditor extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { title: '', text: '' } // You can also pass a Quill Delta here
+    this.state = {
+      title: '',
+      text: '',
+    } // You can also pass a Quill Delta here
 
-    this.wikiRef = db.ref('wikiRef')
+    this.wikiRef = db.ref('wikiEntries')
     this.handleChange = this.handleChange.bind(this)
     this.setTitle = this.setTitle.bind(this)
     this.handleEntry = this.handleEntry.bind(this)
   }
 
   setTitle(evt) {
-    this.setState({ title: evt.target.value })
+    this.setState({
+      title: evt.target.value,
+    })
   }
 
   handleChange(value) {
-    this.setState({ text: value })
+    this.setState({
+      text: value,
+    })
   }
 
   handleEntry() {
+    console.log(this.wikiRef)
     if (this.props.wikiId === null) {
       this.wikiRef.push({
         author: this.props.authorId,
-        tite: this.state.title,
+        title: this.state.title,
         text: this.state.text,
       })
     }
@@ -37,9 +45,9 @@ class MyEditor extends React.Component {
   render() {
     return (
       <div>
-        <input type="text" placeholder="enter your title" value={this.state.title} onChange={this.setTitle} />
-        <ReactQuill test={theme} theme="snow" value={this.state.text} onChange={this.handleChange} />
-        <button onClick={this.handleEntry}>Submit</button>
+        <input type="text" placeholder="enter your title" value={this.state.title} onChange={this.setTitle} />{' '}
+        <ReactQuill test={theme} theme="snow" value={this.state.text} onChange={this.handleChange} />{' '}
+        <button onClick={this.handleEntry}> Submit </button>{' '}
       </div>
     )
   }
