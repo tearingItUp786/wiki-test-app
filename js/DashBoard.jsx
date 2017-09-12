@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 
 import { db } from './firebase'
 import Header from './Header'
+import WikiCard from './WikiCard'
 
 class DashBoard extends Component {
   state = {
@@ -30,7 +31,7 @@ class DashBoard extends Component {
               .indexOf(this.state.searchTerm.toUpperCase()) >= 0
           ) {
             console.log('found an item')
-            foundItems.push(childSnapshot.val())
+            foundItems.push(childSnapshot)
           }
         })
       })
@@ -61,7 +62,7 @@ class DashBoard extends Component {
           />
           <button type="submit">Submit</button>
         </form>
-        {this.state.foundItems.map(element => <h1>{element.title}</h1>)}
+        {this.state.foundItems.map(element => <WikiCard show={element} />)}
       </div>
     )
   }
