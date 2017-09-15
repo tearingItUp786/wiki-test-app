@@ -13,7 +13,7 @@ const Wrapper = styled.div`
 
 const WikiCard = ({ show }) => (
   <Wrapper>
-    <Link to="/">
+    <Link to={`/edit/${show.key}`}>
       <h1>{show.val().title}</h1>
       {renderHTML(show.val().text)}
     </Link>

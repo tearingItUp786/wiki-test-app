@@ -1,10 +1,12 @@
 import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
+
 import { auth, storageKey } from './firebase'
 import DashBoard from './DashBoard'
 import Login from './Login'
 import PrivateRoute from './PrivateRoute'
 import Add from './Add'
+import Edit from './Edit'
 
 const Delete = () => <h1>Delete</h1>
 
@@ -23,7 +25,7 @@ class App extends React.Component {
         this.setState({
           user,
         })
-        console.log('a user rexisted')
+        console.log('a user existed')
       } else {
         window.localStorage.removeItem(storageKey)
         this.setState({
@@ -40,6 +42,7 @@ class App extends React.Component {
         <Switch>
           <Route path="/login" component={Login} handleAuthChange />
           <PrivateRoute exact user={this.state.user} path="/add" component={Add} />
+          <PrivateRoute exact user={this.state.user} path="/edit/:id" component={Edit} />
           <PrivateRoute exact user={this.state.user} path="/delete" component={Delete} />
           <PrivateRoute user={this.state.user} path="/" component={DashBoard} />
         </Switch>

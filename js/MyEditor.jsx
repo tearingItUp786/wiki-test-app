@@ -19,6 +19,21 @@ class MyEditor extends React.Component {
     this.handleEntry = this.handleEntry.bind(this)
   }
 
+  componentDidMount() {
+    const { wikiId } = this.props
+    if (wikiId !== null) {
+      db
+        .ref(`wikiEntries/${wikiId}`)
+        .once('value')
+        .then(snapshot => {
+          this.setState({
+            title: snapshot.val().title,
+            text: snapshot.val().text,
+          })
+        })
+    }
+  }
+
   setTitle(evt) {
     this.setState({
       title: evt.target.value,
@@ -32,7 +47,6 @@ class MyEditor extends React.Component {
   }
 
   handleEntry() {
-    console.log(this.wikiRef)
     if (this.props.wikiId === null) {
       this.wikiRef.push({
         author: this.props.authorId,
@@ -40,6 +54,12 @@ class MyEditor extends React.Component {
         text: this.state.text,
       })
     }
+
+    this.wikiRef.child(this.props.wikiId).set({
+      author: this.props.authorId,
+      title: this.state.title,
+      text: this.state.text,
+    })
   }
 
   render() {
