@@ -62,7 +62,7 @@ class DashBoard extends Component {
           />
           <button type="submit">Submit</button>
         </form>
-        {this.state.foundItems.map(element => <WikiCard show={element} />)}
+        {this.state.foundItems.map(element => <WikiCard key={element.key} show={element} />)}
       </div>
     )
   }

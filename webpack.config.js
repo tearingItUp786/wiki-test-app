@@ -28,7 +28,13 @@ module.exports = {
     reasons: true,
     chunks: true,
   },
-  plugins: [new webpack.HotModuleReplacementPlugin(), new webpack.NamedModulesPlugin()],
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NamedModulesPlugin(),
+    new webpack.ProvidePlugin({
+      'window.Quill': 'quill',
+    }),
+  ],
   module: {
     rules: [
       {
@@ -44,6 +50,11 @@ module.exports = {
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules(?!\/quill-image-drop-module|quill-image-resize-module)/,
+        loader: 'babel-loader',
       },
     ],
   },
